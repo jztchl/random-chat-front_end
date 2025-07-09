@@ -1,103 +1,122 @@
-import Image from "next/image";
+'use client';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+interface Room {
+  name: string;
+  active_members: number;
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [username, setUsername] = useState('');
+  const [usernameSet, setUsernameSet] = useState(false);
+  const [rooms, setRooms] = useState<Room[]>([]);
+  const [newRoomName, setNewRoomName] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+  const baseHttp = process.env.NEXT_PUBLIC_BACKEND_URL_HTTPS;
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  useEffect(() => {
+    const savedUsername = localStorage.getItem('chatUsername');
+    if (savedUsername) {
+      setUsername(savedUsername);
+      setUsernameSet(true);
+    }
+    fetchRooms();
+  }, []);
+
+  const fetchRooms = async () => {
+    try {
+      const response = await fetch(`${baseHttp}/list_rooms/`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setRooms(data || []);
+    } catch (error) {
+      console.error('Error fetching rooms:', error);
+      setRooms([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSetUsername = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (username.trim()) {
+      localStorage.setItem('chatUsername', username);
+      setUsernameSet(true);
+    }
+  };
+
+
+  return (
+    <div className="min-h-screen bg-black text-green-400 font-mono p-4">
+      {!usernameSet ? (
+        <div className="max-w-xl mx-auto">
+          <p className="mb-4">[SYSTEM] Welcome to <span className="text-green-300 font-bold">ByteChat Terminal</span></p>
+          <form onSubmit={handleSetUsername}>
+            <label htmlFor="username" className="block mb-2">
+              &gt; Enter username:
+            </label>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full bg-black text-green-400 border border-green-400 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-600"
+              autoFocus
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <button type="submit" className="mt-4 px-4 py-1 border border-green-400 hover:bg-green-600 hover:text-black transition">
+              [SET USERNAME]
+            </button>
+          </form>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      ) : (
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div>
+            <p>&gt; User: <span className="text-green-300">{username}</span></p>
+            <p>&gt; Type a command below or join a room</p>
+          </div>
+
+         
+            <label htmlFor="newRoomName">&gt; Create Room:</label>
+            <input
+              id="newRoomName"
+              type="text"
+              value={newRoomName}
+              onChange={(e) => setNewRoomName(e.target.value)}
+              className="w-full bg-black text-green-400 border border-green-400 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-600"
+              placeholder="room-name"
+            />
+            <button onClick={() => router.push(`/chat/${newRoomName}`)} className="px-4 py-1 border border-green-400 hover:bg-green-600 hover:text-black transition">
+              [CREATE]
+            </button>
+        
+
+          <div>
+            <p className="mb-2">&gt; Available Rooms:</p>
+            {isLoading ? (
+              <p>[LOADING ROOMS...]</p>
+            ) : rooms.length === 0 ? (
+              <p>[NO ROOMS FOUND. CREATE ONE ABOVE.]</p>
+            ) : (
+              <div className="space-y-2">
+                {rooms.map((room) => (
+                  <div
+                    key={room.name}
+                    className="p-2 border border-green-500 hover:bg-green-800 hover:text-black cursor-pointer"
+                    onClick={() => router.push(`/chat/${room.name}`)}
+                  >
+                    <p># {room.name}</p>
+                    <p className="text-xs text-green-300">{room.active_members} user(s) online</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
