@@ -9,7 +9,7 @@
 
 ## ⚡ Overview
 
-**Random Chat** is a cyberpunk-themed, real-time web chat app where users can:
+**Random Chat** is a Terminal-themed, real-time web chat app where users can:
 
 * Join or create public chat rooms
 * Chat anonymously without signup
