@@ -2,8 +2,9 @@
 
 <p align="center">
   <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/logo.png?raw=true" alt="App Logo" width="200"/>
-  # Terminal Styled Random Chat App
 </p>
+
+<h1 align="center">Terminal Styled Random Chat App</h1>
 
 
 
@@ -29,8 +30,8 @@
 
 ## 🖼️ Preview
 <p align="center">
-  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/1.png?raw=true" width="600"/>
-  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/2.png?raw=true" width="600"/>
+  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/1.png?raw=true" width="400"/>
+  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/2.png?raw=true" width="400"/>
 </p>
 
 
