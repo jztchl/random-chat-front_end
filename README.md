@@ -1,8 +1,9 @@
+# Terminal Chat App
 
-````md
 <p align="center">
-  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/logo.png?raw=true" alt="Random Chat Logo" width="200"/>
+  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/logo.png?raw=true" alt="App Logo" width="200"/>
 </p>
+
 
 # 🖥️ Random Chat
 
@@ -14,34 +15,29 @@
 
 **Random Chat** is a cyberpunk-themed, real-time web chat app where users can:
 
-* Join or create public chat rooms  
-* Chat anonymously without signup  
-* Experience a slick terminal-style UI  
-* See who's active in real time  
-* Send and receive messages live via WebSockets  
+* Join or create public chat rooms
+* Chat anonymously without signup
+* Experience a slick terminal-style UI
+* See who's active in real time
+* Send and receive messages live via WebSockets
 
 > Built with 💚 Next.js App Router + TailwindCSS + native WebSockets
 
 ---
 
 ## 🖼️ Preview
-
-<p align="center">
-  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/1.png?raw=true" alt="Chat Room Screenshot" width="600"/>
-</p>
-<p align="center">
-  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/2.png?raw=true" alt="Room Join Page" width="600"/>
-</p>
+![Terminal UI Screenshot]https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/1.png?raw=true)
+![Terminal UI Screenshot]https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/2.png?raw=true)
 
 ---
 
 ## 🧠 Features
 
-* 🔓 No signup — pick a nickname and go  
-* 📡 Real-time messaging via WebSockets  
-* 🧪 Terminal-style hacker UI  
-* 🏠 Room creation & discovery  
-* 🔐 Local username persistence  
+* 🔓 No signup — pick a nickname and go
+* 📡 Real-time messaging via WebSockets
+* 🧪 Terminal-style hacker UI
+* 🏠 Room creation & discovery
+* 🔐 Local username persistence
 * ⚙️ Deployed + environment-configurable frontend
 
 ---
@@ -62,9 +58,9 @@
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/random-chat-frontend.git
+git clone https://github.com/jztchl/random-chat-frontend.git
 cd random-chat-frontend
-````
+```
 
 ### 2. Install dependencies
 
@@ -77,8 +73,8 @@ npm install
 Create a `.env.local` file in the root and add:
 
 ```env
-NEXT_PUBLIC_BACKEND_URL_HTTPS=your-url
-NEXT_PUBLIC_BACKEND_URL_WSS=your-url
+NEXT_PUBLIC_BACKEND_URL_HTTPS=https://your-url
+NEXT_PUBLIC_BACKEND_URL_WSS=wss://your-url
 ```
 
 > 🔒 Backend & WebSocket URLs are injected via environment variables for flexibility.
@@ -101,6 +97,7 @@ app/
 ├─ page.tsx              # Home - Join/Create rooms
 ├─ chat/
 │   └─ [room]/page.tsx   # Dynamic Chat Room UI
+│      
 │
 ├─ styles/
 │   └─ globals.css       # Global styles
@@ -123,7 +120,8 @@ This project works seamlessly on [Vercel](https://vercel.com/):
 ## 🙏 Credits
 
 Backend API by [random-room-chats](https://github.com/jztchl/random-room-chats)
-Built with ❤️ by jztchl
+
+Built with ❤️ by \jztchl
 
 ---
 
@@ -131,6 +129,4 @@ Built with ❤️ by jztchl
 
 MIT License — use it, remix it, own it.
 
-```
-
-
+---
