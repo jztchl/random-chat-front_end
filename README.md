@@ -5,11 +5,6 @@
 </p>
 
 <h1 align="center">Terminal Styled Random Chat App</h1>
-
-
-
-# 🖥️ Random Chat
-
 *Chat freely in rooms — terminal-style, real-time, anonymous*
 
 ---
