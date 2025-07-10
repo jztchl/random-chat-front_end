@@ -1,5 +1,3 @@
-
-
 <p align="center">
   <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/logo.png?raw=true" alt="App Logo" width="200"/>
 </p>
