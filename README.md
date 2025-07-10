@@ -1,8 +1,10 @@
-# Terminal Chat App
+
 
 <p align="center">
   <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/logo.png?raw=true" alt="App Logo" width="200"/>
+  # Terminal Styled Random Chat App
 </p>
+
 
 
 # 🖥️ Random Chat
@@ -26,8 +28,11 @@
 ---
 
 ## 🖼️ Preview
-![Terminal UI Screenshot]https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/1.png?raw=true)
-![Terminal UI Screenshot]https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/2.png?raw=true)
+<p align="center">
+  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/1.png?raw=true" width="600"/>
+  <img src="https://github.com/jztchl/random-chat-front_end/blob/main/screenshots/2.png?raw=true" width="600"/>
+</p>
+
 
 ---
 
@@ -121,7 +126,7 @@ This project works seamlessly on [Vercel](https://vercel.com/):
 
 Backend API by [random-room-chats](https://github.com/jztchl/random-room-chats)
 
-Built with ❤️ by \jztchl
+Built with ❤️ by jztchl
 
 ---
 
